@@ -29,12 +29,11 @@ export default function SafetySection() {
     <section
       id="safety"
       ref={sectionRef}
-      className="relative py-24 lg:py-32 px-6"
-      style={{ background: '#0D0D0D' }}
+      className="relative px-6 pb-24 pt-16 lg:pb-32 lg:pt-24"
+      style={{ background: 'var(--bg-primary)' }}
     >
       <div className="max-w-[1100px] mx-auto">
         <RevealBlock className="text-center mb-16">
-          <div className="section-label">PARENT TRUST</div>
           <h2 className="section-heading" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
             Built with care. For families.
           </h2>
@@ -70,8 +69,8 @@ export default function SafetySection() {
                 key={i}
                 className="rounded-2xl p-6 lg:p-7 transition-all duration-300"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(255, 255, 255, 0.06)',
+                  background: 'var(--surface)',
+                  border: '1px solid var(--border)',
                   borderLeft: '3px solid var(--c-orange)',
                 }}
                 initial={{ opacity: 0, x: 30 }}

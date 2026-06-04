@@ -22,7 +22,7 @@ const faqItems: FAQItem[] = [
   },
   {
     question: 'What is the difference between Cheeko Basic and Cheeko Pro?',
-    answer: 'Cheeko Pro has a color screen with the fox assistant, richer visual interactions, and a more expansive content experience. Cheeko Basic is audio-first with tactile controls — no screen. Both support RFID cards, multilingual play, and the Parent App. Cheeko Basic pricing starts at ₹3,990.',
+    answer: 'Cheeko Pro has a color screen with the fox assistant, richer visual interactions, a kids radio channel, and educational games for maths, colors, numbers, spelling, and animal sounds. Cheeko Basic is audio-first with tactile controls. Both support Cheeko Cards, multilingual play, and the Parent App. Cheeko Basic pricing starts at ₹3,990.',
   },
   {
     question: 'Can parents control what Cheeko says?',
@@ -38,7 +38,7 @@ const faqItems: FAQItem[] = [
   },
   {
     question: 'What comes in the box?',
-    answer: 'Cheeko Pro device, USB-C charging cable, quick-start card, and 1 sample RFID story card. Additional Cheeko Cards are sold separately.',
+    answer: 'Cheeko Pro device, USB-C charging cable, quick-start card, and 1 sample Cheeko Card. Additional Cheeko Cards are sold separately.',
   },
   {
     question: 'When will Cheeko ship?',
@@ -56,7 +56,7 @@ function AccordionItem({ item, index }: { item: FAQItem; index: number }) {
   return (
     <motion.div
       className="border-b"
-      style={{ borderColor: 'rgba(255,255,255,0.06)' }}
+      style={{ borderColor: 'var(--border)' }}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -77,7 +77,8 @@ function AccordionItem({ item, index }: { item: FAQItem; index: number }) {
         <span
           className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-[var(--c-cream)] transition-all duration-300"
           style={{
-            background: isOpen ? 'rgba(255,107,44,0.1)' : 'rgba(255,255,255,0.04)',
+            background: isOpen ? 'var(--brand-primary-soft)' : 'var(--surface)',
+            border: '1px solid var(--border)',
             transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)',
           }}
         >
@@ -114,7 +115,7 @@ export default function FAQSection() {
     <section
       id="faq"
       className="relative py-24 lg:py-32 px-6"
-      style={{ background: '#0D0D0D' }}
+      style={{ background: 'var(--bg-primary)' }}
     >
       <div className="max-w-[800px] mx-auto">
         <RevealBlock className="text-center mb-12">

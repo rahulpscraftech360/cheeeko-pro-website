@@ -36,12 +36,12 @@ export default function Footer() {
   return (
     <footer
       className="relative pt-16 pb-8 px-6"
-      style={{ background: '#0A0A0A' }}
+      style={{ background: 'var(--bg-secondary)' }}
     >
       {/* Top hairline */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: 'rgba(255,255,255,0.06)' }}
+        style={{ background: 'var(--border)' }}
       />
 
       <div className="max-w-[1100px] mx-auto">
@@ -121,7 +121,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div
           className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4"
-          style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+          style={{ borderTop: '1px solid var(--border)' }}
         >
           <p className="font-sans text-[12px] text-[var(--c-muted)]">
             © 2026 Cheeko. All rights reserved.

@@ -2,7 +2,7 @@ import { useFrame } from '@react-three/fiber'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import * as THREE from 'three'
 
-const PARTICLE_COUNT = 300
+const PARTICLE_COUNT = 420
 
 export default function ParticleField() {
   const geometryRef = useRef<THREE.BufferGeometry>(null)
@@ -12,8 +12,8 @@ export default function ParticleField() {
   const { positions, colors } = useMemo(() => {
     const positionArray = new Float32Array(PARTICLE_COUNT * 3)
     const colorArray = new Float32Array(PARTICLE_COUNT * 3)
-    const orange = new THREE.Color('#FF6B2C')
-    const gold = new THREE.Color('#FFB830')
+    const orange = new THREE.Color('#E96B2C')
+    const mutedInk = new THREE.Color('#5C6166')
     const mixed = new THREE.Color()
 
     for (let i = 0; i < PARTICLE_COUNT; i += 1) {
@@ -26,7 +26,7 @@ export default function ParticleField() {
       positionArray[index + 1] = radius * Math.cos(phi)
       positionArray[index + 2] = radius * Math.sin(phi) * Math.sin(theta)
 
-      mixed.copy(orange).lerp(gold, Math.random())
+      mixed.copy(orange).lerp(mutedInk, Math.random() * 0.32)
       colorArray[index] = mixed.r
       colorArray[index + 1] = mixed.g
       colorArray[index + 2] = mixed.b
@@ -96,12 +96,12 @@ export default function ParticleField() {
         <bufferAttribute attach="attributes-color" args={[colors, 3]} />
       </bufferGeometry>
       <pointsMaterial
-        size={0.012}
+        size={0.021}
         vertexColors
         transparent
-        opacity={0.82}
+        opacity={0.68}
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
+        blending={THREE.NormalBlending}
       />
     </points>
   )

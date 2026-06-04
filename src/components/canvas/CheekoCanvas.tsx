@@ -65,7 +65,7 @@ export default function CheekoCanvas({ scrollProgress, opacity }: CheekoCanvasPr
         camera={{ fov: 45, position: [0, 0.5, 3.5] }}
         gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
       >
-        <color attach="background" args={['#0D0D0D']} />
+        <color attach="background" args={['#FAF7F2']} />
         <CameraParallax disabled={reducedMotion} />
         <ambientLight intensity={0.3} />
         <directionalLight position={[2, 4, 3]} intensity={1.8} color="#FFF4E6" castShadow />

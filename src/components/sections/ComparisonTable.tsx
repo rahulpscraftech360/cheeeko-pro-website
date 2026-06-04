@@ -21,7 +21,7 @@ const rows: Row[] = [
     pro: <span className="text-[var(--c-cream)]">Rich audio</span>,
   },
   {
-    feature: 'RFID Card support',
+    feature: 'Cheeko Card support',
     basic: <Check className="w-5 h-5 text-[var(--c-orange)] mx-auto" />,
     pro: <Check className="w-5 h-5 text-[var(--c-orange)] mx-auto" />,
   },
@@ -41,9 +41,9 @@ const rows: Row[] = [
     pro: <span className="text-[var(--c-cream)]">6 languages</span>,
   },
   {
-    feature: 'Kids audio content',
-    basic: <Check className="w-5 h-5 text-[var(--c-orange)] mx-auto" />,
-    pro: <Check className="w-5 h-5 text-[var(--c-orange)] mx-auto" />,
+    feature: 'Kids radio + games',
+    basic: <Minus className="w-5 h-5 text-[var(--c-muted)] mx-auto" />,
+    pro: <span className="text-[var(--c-cream)]">Radio + learning games</span>,
   },
   {
     feature: 'Box contents',
@@ -65,13 +65,13 @@ export default function ComparisonTable() {
     <section
       id="compare"
       ref={sectionRef}
-      className="relative py-24 lg:py-32 px-6"
-      style={{ background: '#0D0D0D' }}
+      className="relative px-4 py-16 sm:px-6 lg:flex lg:min-h-[100dvh] lg:items-center lg:pb-5 lg:pt-[88px]"
+      style={{ background: 'var(--bg-primary)' }}
     >
-      <div className="max-w-[800px] mx-auto">
-        <RevealBlock className="text-center mb-12">
-          <div className="section-label">COMPARE</div>
-          <h2 className="section-heading" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
+      <div className="mx-auto w-full max-w-[980px]">
+        <RevealBlock className="mb-7 text-center lg:mb-5">
+          <div className="section-label mb-2">COMPARE</div>
+          <h2 className="font-serif text-[clamp(34px,4vw,56px)] leading-[1.02] text-[var(--c-cream)]">
             Find your Cheeko.
           </h2>
         </RevealBlock>
@@ -83,25 +83,30 @@ export default function ComparisonTable() {
         >
           {/* Table */}
           <div className="overflow-x-auto">
-            <table className="w-full">
+            <table className="w-full min-w-[720px] table-fixed">
+              <colgroup>
+                <col className="w-[38%]" />
+                <col className="w-[31%]" />
+                <col className="w-[31%]" />
+              </colgroup>
               <thead>
-                <tr className="h-16">
-                  <th className="text-left font-sans font-bold text-[16px] text-[var(--c-cream)] px-4 rounded-l-xl"
-                    style={{ background: 'rgba(255,255,255,0.06)' }}
+                <tr className="h-12">
+                  <th className="rounded-l-lg px-5 text-left font-sans text-[15px] font-bold text-[var(--c-cream)]"
+                    style={{ background: 'var(--surface)' }}
                   >
                     Feature
                   </th>
                   <th
-                    className="text-center font-sans font-bold text-[16px] text-[var(--c-cream)] px-4 min-w-[140px]"
-                    style={{ background: 'rgba(255,255,255,0.06)' }}
+                    className="px-5 text-center font-sans text-[15px] font-bold text-[var(--c-cream)]"
+                    style={{ background: 'var(--surface)' }}
                   >
                     Cheeko Basic
                   </th>
                   <th
-                    className="text-center font-sans font-bold text-[16px] text-[var(--c-cream)] px-4 rounded-r-xl min-w-[140px]"
+                    className="rounded-r-lg px-5 text-center font-sans text-[15px] font-bold text-[var(--c-cream)]"
                     style={{
-                      background: 'rgba(255,107,44,0.08)',
-                      border: '1px solid rgba(255,107,44,0.15)',
+                      background: 'var(--brand-primary-soft)',
+                      border: '1px solid rgba(233,107,44,0.18)',
                     }}
                   >
                     Cheeko Pro
@@ -112,9 +117,9 @@ export default function ComparisonTable() {
                 {rows.map((row, i) => (
                   <motion.tr
                     key={i}
-                    className="h-16"
+                    className="h-[46px]"
                     style={{
-                      background: i % 2 === 1 ? 'rgba(255,255,255,0.02)' : 'transparent',
+                      background: i % 2 === 1 ? 'rgba(255,255,255,0.58)' : 'transparent',
                     }}
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -124,13 +129,13 @@ export default function ComparisonTable() {
                       ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
                     }}
                   >
-                    <td className="px-4 font-sans text-[16px] text-[var(--c-muted)]">
+                    <td className="px-5 py-2.5 font-sans text-[15px] leading-tight text-[var(--c-muted)]">
                       {row.feature}
                     </td>
-                    <td className="px-4 text-center font-sans text-[16px]">
+                    <td className="px-5 py-2.5 text-center font-sans text-[15px] leading-tight">
                       {row.basic}
                     </td>
-                    <td className="px-4 text-center font-sans text-[16px]">
+                    <td className="px-5 py-2.5 text-center font-sans text-[15px] leading-tight">
                       {row.pro}
                     </td>
                   </motion.tr>
@@ -140,7 +145,7 @@ export default function ComparisonTable() {
           </div>
 
           {/* Bottom note */}
-          <p className="text-center font-sans text-[14px] text-[var(--c-muted)] mt-8">
+          <p className="mt-4 text-center font-sans text-[12px] leading-relaxed text-[var(--c-muted)]">
             Both include: 1-year warranty · Free shipping above ₹499 · Made in India
           </p>
         </motion.div>

@@ -44,10 +44,10 @@ export default function Navbar() {
       <motion.nav
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
-          background: isScrolled ? 'rgba(13,13,13,0.85)' : 'transparent',
+          background: isScrolled ? 'rgba(250,247,242,0.88)' : 'transparent',
           backdropFilter: isScrolled ? 'blur(20px)' : 'none',
           WebkitBackdropFilter: isScrolled ? 'blur(20px)' : 'none',
-          borderBottom: isScrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
+          borderBottom: isScrolled ? '1px solid var(--border)' : '1px solid transparent',
         }}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -98,7 +98,7 @@ export default function Navbar() {
         {isMobileOpen && (
           <motion.div
             className="fixed inset-0 z-40 pt-[72px] md:hidden"
-            style={{ background: 'rgba(13,13,13,0.97)', backdropFilter: 'blur(20px)' }}
+            style={{ background: 'rgba(250,247,242,0.97)', backdropFilter: 'blur(20px)' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

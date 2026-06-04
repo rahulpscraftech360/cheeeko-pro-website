@@ -79,17 +79,17 @@ export default function WhyCheeko() {
     <section
       id="why"
       className="relative py-24 lg:py-32 px-6"
-      style={{ background: '#111111' }}
+      style={{ background: 'var(--bg-secondary)' }}
     >
       <div className="max-w-[1200px] mx-auto">
         {/* Large display text */}
         <div className="text-center mb-20">
           <h2 className="font-serif text-[clamp(36px,7vw,80px)] leading-[1.1] text-[var(--c-cream)]">
             <div className="mb-2">
-              <WordReveal text="Give them wonder," />
+              <WordReveal text="Let play become language," />
             </div>
             <div>
-              <WordReveal text="not another feed." />
+              <WordReveal text="and language become confidence." />
             </div>
           </h2>
         </div>

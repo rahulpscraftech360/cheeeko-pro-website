@@ -37,7 +37,7 @@ export default function CTABlock() {
       ref={sectionRef}
       className="relative py-24 lg:py-40 px-6 overflow-hidden"
       style={{
-        background: 'linear-gradient(135deg, #1a0d00 0%, #0D0D0D 60%)',
+        background: 'linear-gradient(135deg, var(--brand-primary-soft) 0%, var(--bg-primary) 62%)',
       }}
     >
       {/* Subtle radial glow */}
@@ -46,7 +46,7 @@ export default function CTABlock() {
         style={{
           width: '800px',
           height: '800px',
-          background: 'radial-gradient(circle, rgba(255,107,44,0.04) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(233,107,44,0.12) 0%, transparent 70%)',
         }}
       />
 

@@ -40,7 +40,7 @@ function HeroCopy({ scrollProgress }: { scrollProgress: number }) {
 
   const wonderExit = clamp((scrollProgress - 0.18) / 0.18)
   const friendEnter = clamp((scrollProgress - 0.24) / 0.22)
-  const friendExit = clamp((scrollProgress - 0.66) / 0.16)
+  const friendExit = clamp((scrollProgress - 0.88) / 0.12)
 
   return (
     <>
@@ -73,7 +73,7 @@ function HeroCopy({ scrollProgress }: { scrollProgress: number }) {
       >
         <div className="mx-auto max-w-4xl md:mx-0 md:max-w-[560px]">
           <p className="section-label mb-5 flex justify-center md:justify-start">COMING JUNE 2026</p>
-          <h1 className="font-serif text-[clamp(42px,7.4vw,82px)] leading-[1.02] text-[var(--c-cream)] drop-shadow-[0_6px_30px_rgba(0,0,0,0.9)]">
+          <h1 className="font-serif text-[clamp(42px,7.4vw,82px)] leading-[1.02] text-[var(--c-cream)]">
             A friend for your
             <br />
             <span className="text-[var(--c-orange)]">child&apos;s curiosity.</span>
@@ -152,7 +152,7 @@ export default function HeroSection() {
           onUpdate: (self) => {
             const progress = self.progress
             setScrollProgress(progress)
-            setCanvasOpacity(1 - clamp((progress - 0.66) / 0.16))
+            setCanvasOpacity(1 - clamp((progress - 0.88) / 0.12))
           },
         })
       }, sectionRef)
@@ -168,12 +168,14 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative min-h-[300vh] bg-[#0D0D0D]">
-      <div ref={pinRef} className="hero-grain relative h-screen overflow-hidden bg-[#0D0D0D]">
-        <CheekoCanvas scrollProgress={scrollProgress} opacity={canvasOpacity} />
-        <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(13,13,13,0.12)_45%,rgba(13,13,13,0.82)_100%)]" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-56 bg-gradient-to-t from-[#0D0D0D] via-[#0D0D0D]/70 to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-40 bg-gradient-to-b from-[#0D0D0D]/70 to-transparent" />
+    <section ref={sectionRef} className="relative min-h-[300vh] bg-[var(--bg-primary)]">
+      <div ref={pinRef} className="hero-grain relative h-screen overflow-hidden bg-[var(--bg-primary)]">
+        {canvasOpacity > 0.02 ? (
+          <CheekoCanvas scrollProgress={scrollProgress} opacity={canvasOpacity} />
+        ) : null}
+        <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(250,247,242,0.08)_45%,rgba(250,247,242,0.78)_100%)]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-56 bg-gradient-to-t from-[var(--bg-primary)] via-[rgba(250,247,242,0.74)] to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-40 bg-gradient-to-b from-[rgba(250,247,242,0.86)] to-transparent" />
 
         <div className="absolute inset-0 z-20">
           <HeroCopy scrollProgress={scrollProgress} />
