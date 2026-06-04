@@ -37,10 +37,10 @@ function modelYFromProgress(progress: number) {
 
 function modelRotationFromProgress(progress: number) {
   if (progress <= 0.16) return -0.35
-  if (progress <= 0.48) return THREE.MathUtils.lerp(-0.35, 0.08, easeOutCubic(clamp((progress - 0.16) / 0.32)))
-  if (progress <= 0.72) return 0.08
+  if (progress <= 0.48) return THREE.MathUtils.lerp(-0.35, -0.32, easeOutCubic(clamp((progress - 0.16) / 0.32)))
+  if (progress <= 0.72) return -0.32
 
-  return THREE.MathUtils.lerp(0.08, 0.55, easeOutCubic(clamp((progress - 0.72) / 0.28)))
+  return THREE.MathUtils.lerp(-0.32, -0.18, easeOutCubic(clamp((progress - 0.72) / 0.28)))
 }
 
 export default function CheekoModel({ scrollProgress }: CheekoModelProps) {
@@ -98,8 +98,8 @@ export default function CheekoModel({ scrollProgress }: CheekoModelProps) {
 
       if (isAccent) {
         object.material = new THREE.MeshStandardMaterial({
-          color: '#5A2F11',
-          roughness: 0.78,
+          color: '#16120F',
+          roughness: 0.82,
           metalness: 0,
           envMapIntensity: 0.45,
         })
