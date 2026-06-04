@@ -78,10 +78,12 @@
   }
   html {
     scroll-behavior: smooth;
+    overscroll-behavior-x: none;
   }
   body {
     @apply bg-[var(--bg-primary)] text-[var(--text-primary)] font-sans antialiased;
     overflow-x: hidden;
+    overscroll-behavior-x: none;
   }
 }
 
