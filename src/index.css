@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 5.1%;
+    --foreground: 40 20% 95%;
+    --card: 0 0% 5.1%;
+    --card-foreground: 40 20% 95%;
+    --popover: 0 0% 5.1%;
+    --popover-foreground: 40 20% 95%;
+    --primary: 18 100% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 6.7%;
+    --secondary-foreground: 40 20% 95%;
+    --muted: 0 0% 6.7%;
+    --muted-foreground: 0 0% 55%;
+    --accent: 40 80% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 18 100% 55%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 40 20% 95%;
+    --sidebar-primary: 18 100% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 40 20% 95%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 18 100% 55%;
+
+    /* Cheeko Brand Colors */
+    --c-charcoal: #0D0D0D;
+    --c-charcoal-light: #111111;
+    --c-charcoal-footer: #0A0A0A;
+    --c-cream: #F5F0E8;
+    --c-cream-70: rgba(245, 240, 232, 0.7);
+    --c-orange: #FF6B2C;
+    --c-orange-glow: rgba(255, 107, 44, 0.15);
+    --c-orange-dim: rgba(255, 107, 44, 0.08);
+    --c-orange-border: rgba(255, 107, 44, 0.15);
+    --c-orange-border-hover: rgba(255, 107, 44, 0.25);
+    --c-gold: #FFB830;
+    --c-gold-dim: rgba(255, 184, 48, 0.1);
+    --c-gold-border: rgba(255, 184, 48, 0.2);
+    --c-muted: #8A8A8A;
+    --c-muted-light: rgba(255, 255, 255, 0.06);
+    --c-muted-medium: rgba(255, 255, 255, 0.08);
+    --c-muted-heavy: rgba(255, 255, 255, 0.15);
+    --c-glass: rgba(255, 255, 255, 0.04);
+    --c-glass-border: rgba(255, 255, 255, 0.08);
+    --c-glass-hover: rgba(255, 255, 255, 0.06);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-[#0D0D0D] text-[var(--c-cream)] font-sans antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply font-sans font-semibold uppercase text-[11px] tracking-[0.15em] text-[var(--c-orange)] mb-4;
+  }
+
+  .section-heading {
+    @apply font-serif text-[clamp(36px,6vw,72px)] leading-[1.05] text-[var(--c-cream)];
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border-radius: 32px;
+  }
+
+  .pill-tag {
+    @apply inline-flex items-center font-sans font-bold uppercase text-[10px] tracking-[0.12em] px-3 py-1.5 rounded-full;
+  }
+
+  .pill-tag-orange {
+    background: rgba(255, 107, 44, 0.1);
+    border: 1px solid rgba(255, 107, 44, 0.2);
+    color: var(--c-orange);
+  }
+
+  .pill-tag-gold {
+    background: rgba(255, 184, 48, 0.1);
+    border: 1px solid rgba(255, 184, 48, 0.2);
+    color: var(--c-gold);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center font-sans font-semibold text-sm px-8 py-3.5 rounded-full transition-all duration-300;
+    background: var(--c-orange);
+    color: white;
+    border: 1.5px solid transparent;
+  }
+
+  .btn-primary:hover {
+    background: #e85a1f;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255, 107, 44, 0.3);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center font-sans font-semibold text-sm px-8 py-3.5 rounded-full transition-all duration-300;
+    background: transparent;
+    color: var(--c-cream);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--c-orange);
+    color: var(--c-orange);
+    transform: translateY(-2px);
+  }
+
+  .text-muted-custom {
+    color: var(--c-muted);
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0D0D0D;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Selection */
+::selection {
+  background: rgba(255, 107, 44, 0.3);
+  color: var(--c-cream);
+}
