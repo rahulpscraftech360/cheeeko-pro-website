@@ -42,6 +42,14 @@ function CameraParallax({ disabled }: { disabled: boolean }) {
   return null
 }
 
+function DesktopContactShadow() {
+  const { size } = useThree()
+
+  if (size.width < 768) return null
+
+  return <ContactShadows position={[0, -0.8, 0]} opacity={0.34} blur={2.5} scale={6} />
+}
+
 export default function CheekoCanvas({ scrollProgress, opacity }: CheekoCanvasProps) {
   const [dpr, setDpr] = useState(1)
   const [reducedMotion, setReducedMotion] = useState(false)
@@ -75,7 +83,7 @@ export default function CheekoCanvas({ scrollProgress, opacity }: CheekoCanvasPr
           <Environment preset="city" />
           <ParticleField />
           <CheekoModel scrollProgress={reducedMotion ? 0.08 : scrollProgress} />
-          <ContactShadows position={[0, -0.8, 0]} opacity={0.4} blur={2.5} scale={6} />
+          <DesktopContactShadow />
           <PostFX />
         </Suspense>
       </Canvas>

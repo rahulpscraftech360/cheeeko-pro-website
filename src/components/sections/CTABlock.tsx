@@ -44,8 +44,8 @@ export default function CTABlock() {
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
         style={{
-          width: '800px',
-          height: '800px',
+          width: 'min(800px, 90vw)',
+          height: 'min(800px, 90vw)',
           background: 'radial-gradient(circle, rgba(233,107,44,0.12) 0%, transparent 70%)',
         }}
       />

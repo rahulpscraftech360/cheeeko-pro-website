@@ -73,7 +73,7 @@ export default function SafetySection() {
                   border: '1px solid var(--border)',
                   borderLeft: '3px solid var(--c-orange)',
                 }}
-                initial={{ opacity: 0, x: 30 }}
+                initial={{ opacity: 0, x: 'min(30px, 3vw)' }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{
                   duration: 0.6,

@@ -65,30 +65,30 @@ function HeroCopy({ scrollProgress }: { scrollProgress: number }) {
       </motion.div>
 
       <motion.div
-        className="absolute inset-0 flex items-start justify-center px-6 pt-[13vh] text-center md:items-center md:justify-start md:pl-[8vw] md:pr-[52vw] md:pt-0 md:text-left"
+        className="absolute inset-0 flex items-start justify-center px-6 pt-[10vh] text-center md:items-center md:justify-start md:pl-[8vw] md:pr-[52vw] md:pt-0 md:text-left"
         style={{
           opacity: friendEnter * (1 - friendExit),
           transform: `translate3d(0, ${(1 - friendEnter) * 64 - scrollProgress * 22}px, 0)`,
         }}
       >
         <div className="mx-auto max-w-4xl md:mx-0 md:max-w-[560px]">
-          <p className="section-label mb-5 flex justify-center md:justify-start">COMING JUNE 2026</p>
-          <h1 className="font-serif text-[clamp(42px,7.4vw,82px)] leading-[1.02] text-[var(--c-cream)]">
+          <p className="section-label mb-4 flex justify-center md:mb-5 md:justify-start">COMING JUNE 2026</p>
+          <h1 className="font-serif text-[clamp(38px,10vw,76px)] leading-[1.02] text-[var(--c-cream)] md:text-[clamp(42px,7.4vw,82px)]">
             A friend for your
             <br />
             <span className="text-[var(--c-orange)]">child&apos;s curiosity.</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-[560px] font-sans text-[18px] leading-[1.65] text-[var(--c-muted)] md:mx-0">
+          <p className="mx-auto mt-5 max-w-[560px] font-sans text-[16px] leading-[1.55] text-[var(--c-muted)] md:mx-0 md:mt-6 md:text-[18px] md:leading-[1.65]">
             Cheeko Pro is a multilingual AI companion that talks, listens, and plays - in the languages your family speaks at home.
           </p>
-          <p className="mx-auto mt-6 max-w-3xl font-sans text-[11px] font-semibold uppercase leading-6 tracking-[0.12em] text-[rgba(245,240,232,0.68)] md:mx-0">
+          <p className="mx-auto mt-6 hidden max-w-3xl font-sans text-[11px] font-semibold uppercase leading-6 tracking-[0.12em] text-[rgba(245,240,232,0.68)] md:mx-0 md:block">
             AI Language Companion / Multilingual / Card-Activated / Built for India
           </p>
-          <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row md:justify-start">
-            <a href="#waitlist" className="btn-primary px-10 py-4 text-base">
+          <div className="absolute inset-x-6 bottom-[calc(env(safe-area-inset-bottom)+28px)] flex flex-col items-center justify-center gap-3 sm:flex-row md:static md:inset-auto md:mt-9 md:justify-start md:gap-4">
+            <a href="#waitlist" className="btn-primary w-full max-w-[220px] px-8 py-3.5 text-sm md:w-auto md:max-w-none md:px-10 md:py-4 md:text-base">
               Join Waitlist
             </a>
-            <a href="#features" className="btn-secondary px-10 py-4 text-base">
+            <a href="#features" className="btn-secondary w-full max-w-[220px] px-8 py-3.5 text-sm md:w-auto md:max-w-none md:px-10 md:py-4 md:text-base">
               Explore Cheeko
             </a>
           </div>

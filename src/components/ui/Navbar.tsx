@@ -63,7 +63,7 @@ export default function Navbar() {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden w-10 h-10 flex items-center justify-center text-[var(--c-cream)]"
+            className="md:hidden h-11 w-11 flex items-center justify-center text-[var(--c-cream)]"
             onClick={() => setIsMobileOpen(!isMobileOpen)}
             aria-label="Toggle menu"
           >
