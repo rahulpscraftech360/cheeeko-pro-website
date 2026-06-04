@@ -24,6 +24,8 @@ const scenes: Scene[] = [
   {
     slug: 'meet-cheeko',
     headline: 'Stories without the phone.',
+    image: '/slide2.png',
+    imageAlt: 'Cheeko storytelling without a phone',
     body: 'Every bedtime story, every song, every little adventure — delivered through Cheeko\'s voice, not a glowing rectangle. Phone-free play starts here.',
   },
   {
@@ -35,11 +37,6 @@ const scenes: Scene[] = [
     slug: 'cards',
     headline: 'Tap a card, start an adventure.',
     body: 'Each Cheeko Card unlocks a world — a story, a song, a learning game. Tap and play. No menus. No passwords. Just wonder.',
-  },
-  {
-    slug: 'parent-safety',
-    headline: 'Parents stay in control.',
-    body: 'Set the languages. Choose the content. Review Cheeko\'s sessions. The Parent App puts you in charge — without interrupting the magic.',
   },
 ]
 

@@ -1,10 +1,71 @@
 import { motion, type Variants } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
+import { BookOpen, Gamepad2, Globe2, MessageCircle, Radio, Volume2, type LucideIcon } from 'lucide-react'
+import { type CSSProperties, useCallback, useEffect, useRef, useState } from 'react'
 import CheekoCanvas from '@/components/canvas/CheekoCanvas'
 
 const softEase: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 const clamp = (value: number, min = 0, max = 1) => Math.max(min, Math.min(max, value))
+
+type OrbitCard = {
+  title: string
+  subtitle: string
+  Icon: LucideIcon
+  angle: number
+  iconBg: string
+  iconColor: string
+}
+
+const orbitCards: OrbitCard[] = [
+  {
+    title: 'Namaste!',
+    subtitle: '6+ languages',
+    Icon: Globe2,
+    angle: -150,
+    iconBg: 'rgba(167,139,250,0.16)',
+    iconColor: 'var(--accent-purple)',
+  },
+  {
+    title: 'Stories',
+    subtitle: 'bedtime magic',
+    Icon: BookOpen,
+    angle: -90,
+    iconBg: 'rgba(240,139,167,0.16)',
+    iconColor: 'var(--accent-pink)',
+  },
+  {
+    title: "Let's play",
+    subtitle: 'story games',
+    Icon: MessageCircle,
+    angle: -30,
+    iconBg: 'rgba(233,107,44,0.16)',
+    iconColor: 'var(--brand-primary)',
+  },
+  {
+    title: 'Kids radio',
+    subtitle: 'daily wonder',
+    Icon: Radio,
+    angle: 30,
+    iconBg: 'rgba(155,203,113,0.18)',
+    iconColor: 'var(--accent-green)',
+  },
+  {
+    title: 'Animal sounds',
+    subtitle: 'listen & learn',
+    Icon: Volume2,
+    angle: 90,
+    iconBg: 'rgba(234,170,47,0.18)',
+    iconColor: 'var(--c-gold)',
+  },
+  {
+    title: 'Learning games',
+    subtitle: 'maths, colors',
+    Icon: Gamepad2,
+    angle: 150,
+    iconBg: 'rgba(125,168,255,0.18)',
+    iconColor: 'var(--accent-blue)',
+  },
+]
 
 function StaggeredLine({ words, className = '' }: { words: string[]; className?: string }) {
   const word: Variants = {
@@ -81,7 +142,7 @@ function HeroCopy({ scrollProgress }: { scrollProgress: number }) {
           <p className="mx-auto mt-5 max-w-[560px] font-sans text-[16px] leading-[1.55] text-[var(--c-muted)] md:mx-0 md:mt-6 md:text-[18px] md:leading-[1.65]">
             Cheeko Pro is a multilingual AI companion that talks, listens, and plays - in the languages your family speaks at home.
           </p>
-          <p className="mx-auto mt-6 hidden max-w-3xl font-sans text-[11px] font-semibold uppercase leading-6 tracking-[0.12em] text-[rgba(245,240,232,0.68)] md:mx-0 md:block">
+          <p className="mx-auto mt-6 hidden max-w-3xl font-sans text-[11px] font-semibold uppercase leading-6 tracking-[0.12em] text-[var(--c-muted)] md:mx-0 md:block">
             AI Language Companion / Multilingual / Card-Activated / Built for India
           </p>
           <div className="absolute inset-x-6 bottom-[calc(env(safe-area-inset-bottom)+28px)] flex flex-col items-center justify-center gap-3 sm:flex-row md:static md:inset-auto md:mt-9 md:justify-start md:gap-4">
@@ -95,6 +156,69 @@ function HeroCopy({ scrollProgress }: { scrollProgress: number }) {
         </div>
       </motion.div>
     </>
+  )
+}
+
+function HeroOrbitCards({ scrollProgress }: { scrollProgress: number }) {
+  const orbitEnter = clamp((scrollProgress - 0.3) / 0.18)
+  const orbitExit = clamp((scrollProgress - 0.82) / 0.16)
+  const orbitOpacity = orbitEnter * (1 - orbitExit)
+
+  return (
+    <div
+      className="hero-orbit-layer pointer-events-none absolute inset-0 z-[13]"
+      style={{
+        opacity: orbitOpacity,
+        transform: `translate3d(0, ${(1 - orbitOpacity) * 18}px, 0) scale(${0.97 + orbitOpacity * 0.03})`,
+      }}
+      aria-hidden="true"
+    >
+      <div className="hero-orbit-stage">
+        <div className="hero-orbit-glow" />
+        <div className="hero-orbit-ring hero-orbit-ring-lg" />
+        <div className="hero-orbit-ring hero-orbit-ring-md" />
+        <div className="hero-orbit-ring hero-orbit-ring-sm" />
+
+        <span className="hero-sparkle hero-sparkle-1" />
+        <span className="hero-sparkle hero-sparkle-2" />
+        <span className="hero-sparkle hero-sparkle-3" />
+        <span className="hero-sparkle hero-sparkle-4" />
+        <span className="hero-sparkle hero-sparkle-5" />
+
+        <div className="hero-orbit-shell">
+          {orbitCards.map((card, index) => {
+            const Icon = card.Icon
+            const style = {
+              '--orbit-angle': `${card.angle}deg`,
+              '--orbit-angle-inverse': `${-card.angle}deg`,
+              '--float-delay': `${index * -0.65}s`,
+              '--icon-bg': card.iconBg,
+              '--icon-color': card.iconColor,
+            } as CSSProperties
+
+            return (
+              <div key={card.title} className="hero-orbit-item" style={style}>
+                <div className="hero-orbit-upright">
+                  <div className="hero-orbit-card">
+                    <span className="hero-orbit-icon">
+                      <Icon size={21} strokeWidth={2.2} />
+                    </span>
+                    <span>
+                      <span className="block font-sans text-[14px] font-bold leading-tight text-[var(--text-primary)]">
+                        {card.title}
+                      </span>
+                      <span className="mt-1 block font-sans text-[12px] font-semibold leading-tight text-[var(--text-secondary)]">
+                        {card.subtitle}
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -118,6 +242,14 @@ export default function HeroSection() {
   const pinRef = useRef<HTMLDivElement>(null)
   const [scrollProgress, setScrollProgress] = useState(0)
   const [canvasOpacity, setCanvasOpacity] = useState(1)
+
+  const handleDeviceProjection = useCallback((point: { x: number; y: number }) => {
+    const heroRoot = pinRef.current
+    if (!heroRoot) return
+
+    heroRoot.style.setProperty('--hero-device-x', `${point.x}px`)
+    heroRoot.style.setProperty('--hero-device-y', `${point.y}px`)
+  }, [])
 
   useEffect(() => {
     let context: { revert: () => void } | undefined
@@ -170,8 +302,9 @@ export default function HeroSection() {
   return (
     <section ref={sectionRef} className="relative min-h-[300vh] bg-[var(--bg-primary)]">
       <div ref={pinRef} className="hero-grain relative h-screen overflow-hidden bg-[var(--bg-primary)]">
+        <HeroOrbitCards scrollProgress={scrollProgress} />
         {canvasOpacity > 0.02 ? (
-          <CheekoCanvas scrollProgress={scrollProgress} opacity={canvasOpacity} />
+          <CheekoCanvas scrollProgress={scrollProgress} opacity={canvasOpacity} onDeviceProjection={handleDeviceProjection} />
         ) : null}
         <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(250,247,242,0.08)_45%,rgba(250,247,242,0.78)_100%)]" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-56 bg-gradient-to-t from-[var(--bg-primary)] via-[rgba(250,247,242,0.74)] to-transparent" />

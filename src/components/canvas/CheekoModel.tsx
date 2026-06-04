@@ -11,6 +11,7 @@ const MOBILE_MODEL_SCALE = 9.6
 
 type CheekoModelProps = {
   scrollProgress: number
+  onDeviceProjection?: (point: { x: number; y: number }) => void
 }
 
 function easeOutCubic(value: number) {
@@ -43,12 +44,13 @@ function modelRotationFromProgress(progress: number) {
   return THREE.MathUtils.lerp(-0.32, -0.18, easeOutCubic(clamp((progress - 0.72) / 0.28)))
 }
 
-export default function CheekoModel({ scrollProgress }: CheekoModelProps) {
+export default function CheekoModel({ scrollProgress, onDeviceProjection }: CheekoModelProps) {
   const { scene } = useGLTF(MODEL_PATH)
   const screenTexture = useTexture(SCREEN_IMAGE_PATH)
-  const { size } = useThree()
+  const { camera, size } = useThree()
   const ref = useRef<THREE.Group>(null)
   const smoothedProgress = useRef(0)
+  const projectedCorner = useRef(new THREE.Vector3())
   const [reducedMotion, setReducedMotion] = useState(false)
 
   useMemo(() => {
@@ -117,6 +119,22 @@ export default function CheekoModel({ scrollProgress }: CheekoModelProps) {
     return clone
   }, [scene, screenTexture])
 
+  const modelBoundsCorners = useMemo(() => {
+    const bounds = new THREE.Box3().setFromObject(styledScene)
+    const { min, max } = bounds
+
+    return [
+      new THREE.Vector3(min.x, min.y, min.z),
+      new THREE.Vector3(min.x, min.y, max.z),
+      new THREE.Vector3(min.x, max.y, min.z),
+      new THREE.Vector3(min.x, max.y, max.z),
+      new THREE.Vector3(max.x, min.y, min.z),
+      new THREE.Vector3(max.x, min.y, max.z),
+      new THREE.Vector3(max.x, max.y, min.z),
+      new THREE.Vector3(max.x, max.y, max.z),
+    ]
+  }, [styledScene])
+
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)')
     const update = () => setReducedMotion(media.matches)
@@ -129,6 +147,7 @@ export default function CheekoModel({ scrollProgress }: CheekoModelProps) {
 
   useFrame((state) => {
     if (!ref.current) return
+    const model = ref.current
 
     smoothedProgress.current = THREE.MathUtils.lerp(smoothedProgress.current, scrollProgress, 0.09)
 
@@ -137,9 +156,37 @@ export default function CheekoModel({ scrollProgress }: CheekoModelProps) {
     const targetX = modelXFromProgress(progress, isCompact)
     const targetY = modelYFromProgress(progress)
     const targetRotation = modelRotationFromProgress(progress)
-    ref.current.position.x = THREE.MathUtils.lerp(ref.current.position.x, targetX, 0.06)
-    ref.current.position.y = reducedMotion ? BASE_Y : targetY + Math.sin(state.clock.elapsedTime) * 0.04
-    ref.current.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, reducedMotion ? 0.08 : targetRotation, 0.08)
+    model.position.x = THREE.MathUtils.lerp(model.position.x, targetX, 0.06)
+    model.position.y = reducedMotion ? BASE_Y : targetY + Math.sin(state.clock.elapsedTime) * 0.04
+    model.rotation.y = THREE.MathUtils.lerp(model.rotation.y, reducedMotion ? 0.08 : targetRotation, 0.08)
+
+    if (onDeviceProjection && size.width >= 768) {
+      model.updateWorldMatrix(true, false)
+
+      let minX = Infinity
+      let maxX = -Infinity
+      let minY = Infinity
+      let maxY = -Infinity
+
+      modelBoundsCorners.forEach((corner) => {
+        projectedCorner.current.copy(corner).applyMatrix4(model.matrixWorld).project(camera)
+
+        const x = (projectedCorner.current.x * 0.5 + 0.5) * size.width
+        const y = (-projectedCorner.current.y * 0.5 + 0.5) * size.height
+
+        minX = Math.min(minX, x)
+        maxX = Math.max(maxX, x)
+        minY = Math.min(minY, y)
+        maxY = Math.max(maxY, y)
+      })
+
+      const x = (minX + maxX) / 2
+      const y = (minY + maxY) / 2
+
+      if (Number.isFinite(x) && Number.isFinite(y) && maxX > minX && maxY > minY) {
+        onDeviceProjection({ x, y })
+      }
+    }
   })
 
   return (

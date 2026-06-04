@@ -9,6 +9,7 @@ import PostFX from './PostFX'
 type CheekoCanvasProps = {
   scrollProgress: number
   opacity: number
+  onDeviceProjection?: (point: { x: number; y: number }) => void
 }
 
 function CameraParallax({ disabled }: { disabled: boolean }) {
@@ -50,7 +51,7 @@ function DesktopContactShadow() {
   return <ContactShadows position={[0, -0.8, 0]} opacity={0.34} blur={2.5} scale={6} />
 }
 
-export default function CheekoCanvas({ scrollProgress, opacity }: CheekoCanvasProps) {
+export default function CheekoCanvas({ scrollProgress, opacity, onDeviceProjection }: CheekoCanvasProps) {
   const [dpr, setDpr] = useState(1)
   const [reducedMotion, setReducedMotion] = useState(false)
 
@@ -66,14 +67,13 @@ export default function CheekoCanvas({ scrollProgress, opacity }: CheekoCanvasPr
   }, [])
 
   return (
-    <div className="pointer-events-none absolute inset-0 z-0" style={{ opacity }} aria-hidden="true">
+    <div className="pointer-events-none absolute inset-0 z-[12]" style={{ opacity }} aria-hidden="true">
       <Canvas
         dpr={dpr}
         shadows
         camera={{ fov: 45, position: [0, 0.5, 3.5] }}
         gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
       >
-        <color attach="background" args={['#FAF7F2']} />
         <CameraParallax disabled={reducedMotion} />
         <ambientLight intensity={0.3} />
         <directionalLight position={[2, 4, 3]} intensity={1.8} color="#FFF4E6" castShadow />
@@ -82,7 +82,7 @@ export default function CheekoCanvas({ scrollProgress, opacity }: CheekoCanvasPr
         <Suspense fallback={null}>
           <Environment preset="city" />
           <ParticleField />
-          <CheekoModel scrollProgress={reducedMotion ? 0.08 : scrollProgress} />
+          <CheekoModel scrollProgress={reducedMotion ? 0.08 : scrollProgress} onDeviceProjection={onDeviceProjection} />
           <DesktopContactShadow />
           <PostFX />
         </Suspense>
