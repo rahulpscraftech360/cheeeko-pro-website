@@ -221,9 +221,9 @@ export default function FeaturesNarrative() {
               {scenes.map((scene, sceneIndex) => (
                 <div
                   key={scene.slug}
-                  className="w-screen h-screen flex-shrink-0 flex items-center justify-center px-[8vw]"
+                  className="w-screen h-screen flex-shrink-0 flex items-center justify-center px-[6vw]"
                 >
-                  <div className="w-full max-w-[1400px] grid grid-cols-2 gap-16 items-center">
+                  <div className="w-full max-w-[1440px] grid grid-cols-[0.9fr_1.1fr] gap-12 items-center">
                     {/* Text */}
                     <div className="space-y-6">
                       <h3 className="font-serif text-[clamp(32px,3.5vw,56px)] leading-[1.08] text-[var(--c-cream)]">
@@ -236,7 +236,7 @@ export default function FeaturesNarrative() {
 
                     {/* Visual placeholder */}
                     <div className="flex items-center justify-center">
-                      <div className="w-full max-w-[480px] aspect-[4/3] rounded-3xl overflow-hidden relative">
+                      <div className="w-full max-w-[576px] aspect-[4/3] rounded-3xl overflow-hidden relative">
                         <div className="absolute inset-0 bg-gradient-to-br from-[var(--surface)] to-[var(--brand-primary-soft)]" />
                         {scene.image ? (
                           <img

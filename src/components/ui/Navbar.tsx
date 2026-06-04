@@ -1,25 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-
-function FoxIcon({ className = '' }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M16 4L8 12V20L16 28L24 20V12L16 4Z"
-        fill="var(--c-orange)"
-        opacity="0.9"
-      />
-      <path
-        d="M16 4L8 12H24L16 4Z"
-        fill="var(--c-orange)"
-      />
-      <circle cx="12.5" cy="16" r="1.5" fill="#0D0D0D" />
-      <circle cx="19.5" cy="16" r="1.5" fill="#0D0D0D" />
-      <ellipse cx="16" cy="19" rx="3" ry="2" fill="#0D0D0D" opacity="0.3" />
-    </svg>
-  )
-}
+import CheekoLogo from '@/components/ui/CheekoLogo'
 
 const navLinks = [
   { label: 'Features', href: '#features' },
@@ -55,11 +37,8 @@ export default function Navbar() {
       >
         <div className="max-w-[1200px] mx-auto px-6 h-[72px] flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5">
-            <FoxIcon className="w-8 h-8" />
-            <span className="font-sans font-bold text-[16px] tracking-[0.06em] text-[var(--c-cream)]">
-              CHEEKO
-            </span>
+          <a href="#" className="flex items-center" aria-label="Cheeko home">
+            <CheekoLogo className="h-12 w-auto object-contain md:h-14" loading="eager" />
           </a>
 
           {/* Desktop links */}

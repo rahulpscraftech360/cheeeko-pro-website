@@ -1,21 +1,4 @@
-function FoxIcon({ className = '' }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M16 4L8 12V20L16 28L24 20V12L16 4Z"
-        fill="var(--c-orange)"
-        opacity="0.9"
-      />
-      <path
-        d="M16 4L8 12H24L16 4Z"
-        fill="var(--c-orange)"
-      />
-      <circle cx="12.5" cy="16" r="1.5" fill="#0D0D0D" />
-      <circle cx="19.5" cy="16" r="1.5" fill="#0D0D0D" />
-      <ellipse cx="16" cy="19" rx="3" ry="2" fill="#0D0D0D" opacity="0.3" />
-    </svg>
-  )
-}
+import CheekoLogo from '@/components/ui/CheekoLogo'
 
 const footerColumns = [
   {
@@ -48,11 +31,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 mb-16">
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <FoxIcon className="w-7 h-7" />
-              <span className="font-sans font-bold text-[18px] tracking-[0.05em] text-[var(--c-cream)]">
-                CHEEKO
-              </span>
+            <div className="mb-4">
+              <CheekoLogo className="h-16 w-auto object-contain" />
             </div>
             <p className="font-sans text-[14px] text-[var(--c-muted)] mb-2">
               Your AI Language Companion
