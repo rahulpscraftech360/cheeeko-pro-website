@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Check } from 'lucide-react'
 import RevealBlock from '@/components/ui/RevealBlock'
+import { publicAsset } from '@/lib/assets'
 
 const proFeatures = [
   'Screen-enabled with fox assistant interface',
@@ -31,6 +32,8 @@ const products = [
     note: 'Audio-first Cheeko companion for screen-free play.',
     offer: 'Sold out',
     visualLabel: 'Basic render',
+    image: publicAsset('cheeko-basic.png'),
+    imageAlt: 'Child holding Cheeko Basic audio companion',
     cta: 'Sold Out',
     soldOut: true,
     features: [
@@ -113,24 +116,36 @@ export default function ProductLine() {
                 ) : null}
               </div>
 
-              <div className="relative mb-3 h-32 w-full overflow-hidden rounded-2xl lg:h-16 xl:h-20">
+              <div className="relative mb-3 h-56 w-full overflow-hidden rounded-2xl lg:h-36 xl:h-44">
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--surface)] to-[var(--brand-primary-soft)]" />
-                <div
-                  className="absolute inset-0 opacity-50"
-                  style={{
-                    background: 'radial-gradient(circle at 40% 50%, rgba(233,107,44,0.18), transparent 70%)',
-                  }}
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="animate-pulse-glow">
-                    <div className="h-20 w-20 rounded-full bg-gradient-to-br from-[var(--c-orange)] to-transparent opacity-25 blur-2xl" />
-                  </div>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-center text-sm font-semibold uppercase tracking-wider text-[var(--c-muted)]">
-                    {product.visualLabel}
-                  </span>
-                </div>
+                {product.image ? (
+                  <img
+                    src={product.image}
+                    alt={product.imageAlt}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                ) : (
+                  <>
+                    <div
+                      className="absolute inset-0 opacity-50"
+                      style={{
+                        background: 'radial-gradient(circle at 40% 50%, rgba(233,107,44,0.18), transparent 70%)',
+                      }}
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="animate-pulse-glow">
+                        <div className="h-20 w-20 rounded-full bg-gradient-to-br from-[var(--c-orange)] to-transparent opacity-25 blur-2xl" />
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-center text-sm font-semibold uppercase tracking-wider text-[var(--c-muted)]">
+                        {product.visualLabel}
+                      </span>
+                    </div>
+                  </>
+                )}
               </div>
 
               <div className="flex flex-1 flex-col">

@@ -32,11 +32,15 @@ const scenes: Scene[] = [
   {
     slug: 'multilingual',
     headline: 'Made for many voices.',
+    image: publicAsset('slide3.jpeg'),
+    imageAlt: 'Cheeko multilingual voice experience',
     body: 'Your child can speak to Cheeko in Hindi, Tamil, Telugu, Kannada, Malayalam, Bengali — or English. Multilingual from day one, because India is.',
   },
   {
     slug: 'cards',
     headline: 'Tap a card, start an adventure.',
+    image: publicAsset('slide4.png'),
+    imageAlt: 'Cheeko cards starting an adventure',
     body: 'Each Cheeko Card unlocks a world — a story, a song, a learning game. Tap and play. No menus. No passwords. Just wonder.',
   },
 ]

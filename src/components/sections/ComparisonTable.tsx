@@ -82,7 +82,41 @@ export default function ComparisonTable() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
         >
           {/* Table */}
-          <div className="overflow-x-auto">
+          <div className="space-y-3 md:hidden">
+            {rows.map((row, i) => (
+              <motion.div
+                key={i}
+                className="overflow-hidden rounded-2xl border border-[var(--border)] bg-[rgba(255,255,255,0.72)] shadow-[0_14px_40px_rgba(69,49,31,0.08)]"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.1 + i * 0.04,
+                  ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+                }}
+              >
+                <div className="border-b border-[var(--border)] px-4 py-3 font-sans text-[14px] font-bold text-[var(--c-cream)]">
+                  {row.feature}
+                </div>
+                <div className="grid grid-cols-2 divide-x divide-[var(--border)]">
+                  <div className="px-3 py-3 text-center font-sans text-[14px] leading-tight">
+                    <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--c-muted)]">
+                      Basic
+                    </div>
+                    {row.basic}
+                  </div>
+                  <div className="bg-[rgba(255,232,218,0.42)] px-3 py-3 text-center font-sans text-[14px] leading-tight">
+                    <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--c-orange)]">
+                      Pro
+                    </div>
+                    {row.pro}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="hidden overflow-x-auto md:block">
             <table className="w-full min-w-[720px] table-fixed">
               <colgroup>
                 <col className="w-[38%]" />

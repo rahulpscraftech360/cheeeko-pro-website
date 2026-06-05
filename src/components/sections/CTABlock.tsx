@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { publicAsset } from '@/lib/assets'
 
 function WordReveal({ text, className = '' }: { text: string; className?: string }) {
   const words = text.split(' ')
@@ -35,11 +36,16 @@ export default function CTABlock() {
     <section
       id="waitlist"
       ref={sectionRef}
-      className="relative py-24 lg:py-40 px-6 overflow-hidden"
-      style={{
-        background: 'linear-gradient(135deg, var(--brand-primary-soft) 0%, var(--bg-primary) 62%)',
-      }}
+      className="relative overflow-hidden bg-[var(--bg-primary)] px-6 pb-44 pt-20 sm:py-24 lg:py-40"
     >
+      <img
+        src={publicAsset('ctabox.png')}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(250,247,242,0.62)_0%,rgba(250,247,242,0.40)_52%,rgba(250,247,242,0.08)_100%)]" />
+
       {/* Subtle radial glow */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
@@ -50,7 +56,7 @@ export default function CTABlock() {
         }}
       />
 
-      <div className="relative max-w-[900px] mx-auto text-center">
+      <div className="relative mx-auto max-w-[900px] -translate-y-10 text-center lg:-translate-y-16">
         {/* Pre-headline */}
         <motion.div
           className="section-label justify-center flex mb-6"
@@ -58,7 +64,9 @@ export default function CTABlock() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          From our idea to your hands.
+          <span className="drop-shadow-[0_2px_8px_rgba(250,247,242,0.95)]">
+            From our idea to your hands.
+          </span>
         </motion.div>
 
         {/* Headline */}
@@ -79,7 +87,7 @@ export default function CTABlock() {
 
         {/* Fine print */}
         <motion.p
-          className="font-sans text-[14px] text-[var(--c-muted)] mb-10"
+          className="mb-10 font-sans text-[14px] font-medium text-[var(--text-primary)] drop-shadow-[0_2px_8px_rgba(250,247,242,0.95)]"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
@@ -89,15 +97,15 @@ export default function CTABlock() {
 
         {/* CTA row */}
         <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col items-center justify-center gap-4 sm:flex-row"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          <button className="btn-primary px-10 py-4 text-base">
+          <button className="btn-primary w-[280px] whitespace-nowrap px-8 py-4 text-base sm:w-auto sm:px-10">
             Join Waitlist
           </button>
-          <a href="#compare" className="btn-secondary px-10 py-4 text-base">
+          <a href="#compare" className="btn-secondary w-[280px] whitespace-nowrap px-8 py-4 text-base sm:w-auto sm:px-10">
             Compare Basic & Pro
           </a>
         </motion.div>

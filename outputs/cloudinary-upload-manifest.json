@@ -1,0 +1,98 @@
+[
+  {
+    "fileName": "slide1.png",
+    "uploadFile": "outputs/cloudinary-optimized/slide1.webp",
+    "url": "https://res.cloudinary.com/dw30tfofi/image/upload/v1780662937/cheeko-site/slide1.webp",
+    "publicId": "cheeko-site/slide1",
+    "resourceType": "image",
+    "format": "webp",
+    "bytes": 86862,
+    "width": 1152,
+    "height": 864
+  },
+  {
+    "fileName": "slide2.png",
+    "uploadFile": "outputs/cloudinary-optimized/slide2.webp",
+    "url": "https://res.cloudinary.com/dw30tfofi/image/upload/v1780662938/cheeko-site/slide2.webp",
+    "publicId": "cheeko-site/slide2",
+    "resourceType": "image",
+    "format": "webp",
+    "bytes": 69076,
+    "width": 1152,
+    "height": 864
+  },
+  {
+    "fileName": "slide3.jpeg",
+    "uploadFile": "outputs/cloudinary-optimized/slide3.webp",
+    "url": "https://res.cloudinary.com/dw30tfofi/image/upload/v1780662939/cheeko-site/slide3.webp",
+    "publicId": "cheeko-site/slide3",
+    "resourceType": "image",
+    "format": "webp",
+    "bytes": 100022,
+    "width": 1152,
+    "height": 864
+  },
+  {
+    "fileName": "slide4.png",
+    "uploadFile": "outputs/cloudinary-optimized/slide4.webp",
+    "url": "https://res.cloudinary.com/dw30tfofi/image/upload/v1780662940/cheeko-site/slide4.webp",
+    "publicId": "cheeko-site/slide4",
+    "resourceType": "image",
+    "format": "webp",
+    "bytes": 80424,
+    "width": 1152,
+    "height": 864
+  },
+  {
+    "fileName": "ctabox.png",
+    "uploadFile": "outputs/cloudinary-optimized/ctabox.webp",
+    "url": "https://res.cloudinary.com/dw30tfofi/image/upload/v1780662941/cheeko-site/ctabox.webp",
+    "publicId": "cheeko-site/ctabox",
+    "resourceType": "image",
+    "format": "webp",
+    "bytes": 169256,
+    "width": 2880,
+    "height": 1200
+  },
+  {
+    "fileName": "cheeko-basic.png",
+    "uploadFile": "outputs/cloudinary-optimized/cheeko-basic.webp",
+    "url": "https://res.cloudinary.com/dw30tfofi/image/upload/v1780662942/cheeko-site/cheeko-basic.webp",
+    "publicId": "cheeko-site/cheeko-basic",
+    "resourceType": "image",
+    "format": "webp",
+    "bytes": 74384,
+    "width": 1200,
+    "height": 600
+  },
+  {
+    "fileName": "screen.png",
+    "uploadFile": "outputs/cloudinary-optimized/screen.webp",
+    "url": "https://res.cloudinary.com/dw30tfofi/image/upload/v1780662943/cheeko-site/screen.webp",
+    "publicId": "cheeko-site/screen",
+    "resourceType": "image",
+    "format": "webp",
+    "bytes": 29448,
+    "width": 1024,
+    "height": 801
+  },
+  {
+    "fileName": "cheekolog.svg",
+    "uploadFile": "public/cheekolog.svg",
+    "url": "https://res.cloudinary.com/dw30tfofi/image/upload/v1780662944/cheeko-site/cheekolog.svg",
+    "publicId": "cheeko-site/cheekolog",
+    "resourceType": "image",
+    "format": "svg",
+    "bytes": 226090,
+    "width": 67,
+    "height": 34
+  },
+  {
+    "fileName": "cheeko.glb",
+    "uploadFile": "public/cheeko.glb",
+    "url": "https://res.cloudinary.com/dw30tfofi/raw/upload/v1780662947/cheeko-site/cheeko.glb",
+    "publicId": "cheeko-site/cheeko.glb",
+    "resourceType": "raw",
+    "bytes": 5192416
+  }
+]
