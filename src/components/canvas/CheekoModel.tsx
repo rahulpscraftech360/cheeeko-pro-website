@@ -2,9 +2,10 @@ import { Float, useGLTF, useTexture } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import * as THREE from 'three'
+import { publicAsset } from '@/lib/assets'
 
-const MODEL_PATH = '/cheeko.glb'
-const SCREEN_IMAGE_PATH = '/screen.png'
+const MODEL_PATH = publicAsset('cheeko.glb')
+const SCREEN_IMAGE_PATH = publicAsset('screen.png')
 const BASE_Y = -0.72
 const MODEL_SCALE = 12.6
 const MOBILE_MODEL_SCALE = 9.6

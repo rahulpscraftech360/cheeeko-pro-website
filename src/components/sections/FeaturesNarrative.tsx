@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { publicAsset } from '@/lib/assets'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -17,14 +18,14 @@ const scenes: Scene[] = [
   {
     slug: 'first-moment',
     headline: 'A friend they can talk to.',
-    image: '/slide1.png',
+    image: publicAsset('slide1.png'),
     imageAlt: 'Cheeko companion screen for children',
     body: 'Cheeko answers questions, tells stories, plays learning games, and keeps kids company with a radio-style channel. Not a screen. Not an algorithm. A friend.',
   },
   {
     slug: 'meet-cheeko',
     headline: 'Stories without the phone.',
-    image: '/slide2.png',
+    image: publicAsset('slide2.png'),
     imageAlt: 'Cheeko storytelling without a phone',
     body: 'Every bedtime story, every song, every little adventure — delivered through Cheeko\'s voice, not a glowing rectangle. Phone-free play starts here.',
   },

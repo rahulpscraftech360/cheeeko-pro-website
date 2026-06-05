@@ -1,3 +1,5 @@
+import { publicAsset } from '@/lib/assets'
+
 type CheekoLogoProps = {
   className?: string
   loading?: 'eager' | 'lazy'
@@ -6,7 +8,7 @@ type CheekoLogoProps = {
 export default function CheekoLogo({ className = '', loading = 'lazy' }: CheekoLogoProps) {
   return (
     <img
-      src="/cheekolog.svg"
+      src={publicAsset('cheekolog.svg')}
       alt="Cheeko"
       width={134}
       height={68}
