@@ -1,0 +1,28 @@
+# Cheeko
+
+> Cheeko is an AI-powered companion device for children, offering multilingual conversation, stories, learning games, Cheeko Card interactions, and parent-controlled play.
+
+Cheeko helps families choose between Cheeko Pro and Cheeko Basic. The site explains the device experience, product differences, safety position, specifications, and waitlist path.
+
+## Primary Pages
+
+- [Home](/): Overview of Cheeko, the product story, feature narrative, device options, comparison, safety, specifications, FAQs, and waitlist call to action.
+- [Product Section](/#product): Cheeko Pro and Cheeko Basic product cards, pricing, availability, and core feature lists.
+- [Compare Section](/#compare): Side-by-side comparison of Cheeko Basic and Cheeko Pro.
+- [Safety Section](/#safety): Parent controls, child-friendly design, and safety-focused positioning.
+- [Specifications Section](/#specs): Device specifications and product details.
+- [FAQ Section](/#faq): Common questions about Cheeko, language support, play modes, and purchase details.
+- [Waitlist Section](/#waitlist): Call to action for joining the Cheeko Pro waitlist.
+
+## Product Summary
+
+- [Cheeko Pro](/#product): Screen-enabled Cheeko companion with fox assistant interface, Cheeko Cards, multilingual support, kids radio, educational games, offline-ready library, and Parent App controls.
+- [Cheeko Basic](/#product): Audio-first Cheeko companion for screen-free play, Cheeko Cards, multilingual play, and Parent App controls.
+
+## Important Context
+
+- Cheeko Pro price shown on the site: Rs. 4,990.
+- Cheeko Basic price shown on the site: Rs. 3,990.
+- Launch offer shown on the site: 20% off with code FIRSTUSER.
+- The product language emphasizes child-friendly companionship, phone-free play, multilingual Indian families, and parent control.
+
